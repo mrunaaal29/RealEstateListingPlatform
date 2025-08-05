@@ -1,7 +1,10 @@
 from flask import Flask, request, jsonify
 import pymysql
+import pymysql.cursors
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # DB connection function
 def get_connection():
