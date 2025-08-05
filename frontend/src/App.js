@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import AdminLogin from './components/AdminLogin';
@@ -6,6 +7,16 @@ import Register from './components/Register';
 import BrowseListings from './components/BrowseListings';
 import AdminDashboard from './components/AdminDashboard';
 import Welcome from './components/Welcome';
+=======
+// 📍 frontend/src/App.js
+
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import Listings from './pages/Listings';
+import AdminDashboard from './components/AdminDashboard';
+import UserDashboard from './components/UserDashboard';
+>>>>>>> 47848ce3dab526f5405d27b579ec1e7ad684d728
 
 function App() {
   const [admin, setAdmin] = useState(null);
@@ -13,6 +24,7 @@ function App() {
   return (
     <Router>
       <Routes>
+<<<<<<< HEAD
         {/* Welcome page as the home route */}
         <Route path="/" element={<Welcome />} />
 
@@ -35,6 +47,11 @@ function App() {
             )
           }
         />
+=======
+        <Route path="/" element={<Listings />} />
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/user" element={<UserDashboard />} />
+>>>>>>> 47848ce3dab526f5405d27b579ec1e7ad684d728
       </Routes>
     </Router>
   );
