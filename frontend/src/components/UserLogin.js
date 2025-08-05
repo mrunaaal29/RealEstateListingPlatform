@@ -19,12 +19,16 @@ function UserLogin() {
       });
 
       if (response.data.user) {
-        const { role } = response.data.user;
-        
-        // Store user info in localStorage (optional but useful)
-        localStorage.setItem('user', JSON.stringify(response.data.user));
+        const user = response.data.user;
+        const { id, role } = user;
+
+        // Store user info in localStorage
+        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('userId', id);
+        localStorage.setItem('role', role);
 
         if (role === 'owner') {
+          localStorage.setItem('ownerId', id); // specifically for AddListing.js
           navigate('/owner/dashboard');
         } else if (role === 'buyer') {
           navigate('/buyer/dashboard');

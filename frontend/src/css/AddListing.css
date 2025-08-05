@@ -1,0 +1,53 @@
+.add-listing-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-listing-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.add-listing-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-listing-form input,
+.add-listing-form textarea,
+.add-listing-form select {
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.add-listing-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.add-listing-form button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-listing-form button:hover {
+  background-color: #0056b3;
+}
+
+.message {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
+  color: green;
+}

@@ -1,22 +1,20 @@
-<<<<<<< HEAD
+// frontend/src/App.js
+
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import AdminLogin from './components/AdminLogin';
-import UserLogin from './components/UserLogin';
-import Register from './components/Register';
-import BrowseListings from './components/BrowseListings';
-import AdminDashboard from './components/AdminDashboard';
+
 import Welcome from './components/Welcome';
-=======
-// 📍 frontend/src/App.js
-
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-import Listings from './pages/Listings';
+import Register from './components/Register';
+import UserLogin from './components/UserLogin';
+import BrowseListings from './components/BrowseListings';
+import AdminLogin from './components/AdminLogin';
 import AdminDashboard from './components/AdminDashboard';
+import Listings from './pages/Listings'; // this is your working Listings.jsx
+import OwnerDashboard from './components/OwnerDashboard';
+import AddListing from './components/AddListing';
+import EditListing from './components/EditListing';
+import DeleteListing from './components/DeleteListing';
 import UserDashboard from './components/UserDashboard';
->>>>>>> 47848ce3dab526f5405d27b579ec1e7ad684d728
 
 function App() {
   const [admin, setAdmin] = useState(null);
@@ -24,14 +22,23 @@ function App() {
   return (
     <Router>
       <Routes>
-<<<<<<< HEAD
         {/* Welcome page as the home route */}
         <Route path="/" element={<Welcome />} />
+
+        {/* Public listings page */}
+        <Route path="/listings" element={<Listings />} />
 
         {/* User routes */}
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<UserLogin />} />
         <Route path="/browse" element={<BrowseListings />} />
+        <Route path="/owner/dashboard" element={<OwnerDashboard />} />
+        <Route path="/add-listing" element={<AddListing />} />
+        <Route path="/edit-listing/:listingId" element={<EditListing />} />
+        <Route path="/delete-listing/:listingId" element={<DeleteListing />} />
+        <Route path="/buyer/dashboard" element={<UserDashboard />} />
+
+
 
         {/* Admin login */}
         <Route path="/admin/login" element={<AdminLogin onLogin={setAdmin} />} />
@@ -47,11 +54,6 @@ function App() {
             )
           }
         />
-=======
-        <Route path="/" element={<Listings />} />
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/user" element={<UserDashboard />} />
->>>>>>> 47848ce3dab526f5405d27b579ec1e7ad684d728
       </Routes>
     </Router>
   );

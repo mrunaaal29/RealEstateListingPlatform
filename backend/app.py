@@ -174,6 +174,15 @@ def edit_listing(id):
     conn.close()
     return jsonify({"message": "Listing updated successfully"})
 
+@app.route('/api/listings/<int:id>', methods=['DELETE'])
+def delete_listing(id):
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM listings WHERE id=%s", (id,))
+    conn.commit()
+    conn.close()
+    return jsonify({"message": "Listing deleted successfully"})
+
 # View listings by owner
 @app.route('/api/owner/<int:owner_id>/listings', methods=['GET'])
 def view_owner_listings(owner_id):

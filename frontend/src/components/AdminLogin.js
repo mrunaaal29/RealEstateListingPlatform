@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // ✅ import navigate
 
 function AdminLogin({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(); // ✅ hook to redirect
 
   const handleLogin = async () => {
     setLoading(true);
@@ -14,10 +16,10 @@ function AdminLogin({ onLogin }) {
         password
       });
 
-      // Axios only enters this block on 2xx status
       if (res.status === 200 && res.data.admin) {
         alert(res.data.message); // "Admin login successful"
-        onLogin(res.data.admin); // Pass admin data to parent
+        onLogin(res.data.admin); // ✅ set admin in App.js
+        navigate('/admin/dashboard'); // ✅ redirect after login
       } else {
         alert('Unexpected response from server.');
       }
