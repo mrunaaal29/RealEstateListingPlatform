@@ -1,7 +1,10 @@
+
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import pymysql
 
 app = Flask(__name__)
+CORS(app)
 
 # DB connection function
 def get_connection():
@@ -10,9 +13,34 @@ def get_connection():
         user='root',
         password='admin123',
         db='realestate_db',
-        cursorclass=pymysql.cursors.DictCursor ,
+        cursorclass=pymysql.cursors.DictCursor,
         port=3307
     )
+
+@app.route('/properties', methods=['GET'])
+def get_properties():
+    try:
+        conn = get_connection()
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT id, title, description, price, location, image_url FROM properties")
+        rows = cursor.fetchall()
+
+        # Define column names
+        columns = ['id', 'title', 'description', 'price', 'location', 'image_url']
+        
+        # Convert each row to a dictionary
+        properties = [dict(zip(columns, row)) for row in rows]
+
+        cursor.close()
+        conn.close()
+        return jsonify(properties)
+    except Exception as e:
+        print("Error fetching properties:", e)
+        return jsonify({"error": "Failed to fetch properties"}), 500
+    
+
+
 
 # --------------------- AUTH ROUTES ---------------------
 
