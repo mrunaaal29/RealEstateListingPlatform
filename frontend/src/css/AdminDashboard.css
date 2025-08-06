@@ -16,7 +16,7 @@ body {
   background-size: cover;
   background-position: center;
   min-height: 100vh;
-  padding: calc(var(--navbar-height) + 380px) 30px 0px; /* Top padding + side + bottom */
+  padding: calc(var(--navbar-height) + 480px) 30px 0px; /* Top padding + side + bottom */
   overflow-x: auto;
   box-sizing: border-box;
 }

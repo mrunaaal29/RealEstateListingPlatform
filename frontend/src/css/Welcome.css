@@ -7,16 +7,22 @@ html, body {
   background-color: #000; /* fallback */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
-/* ✅ Force full width */
+/* 
 body {
   width: 100vw;
   overflow-x: hidden;
+} */
+
+.welcome-page {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; /* Disable scroll only here */
+  background-color: black; /* fallback */
 }
 
 .welcome-container {
-  height: 100vh; /* Full screen height */
-  width: 100vw;  /* Full screen width */
+  height: 100%;
+  width: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -25,8 +31,8 @@ body {
   align-items: center;
   text-align: center;
   position: relative;
+  overflow: hidden;
 }
-
 
 
 .welcome-overlay {

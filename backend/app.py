@@ -223,6 +223,8 @@ def browse_listings():
     conn.close()
     return jsonify(listings)
 
+
+
 # View personal info (after login)
 @app.route('/api/users/<int:id>', methods=['GET'])
 def get_user(id):

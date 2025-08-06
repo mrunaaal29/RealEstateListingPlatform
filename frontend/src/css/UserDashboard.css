@@ -12,9 +12,9 @@ html, body {
 
 /* Dashboard container */
 .user-dashboard {
-  max-width: 1200px;
+  width: 600px;
   margin: 0 auto;
-  padding-top: calc(var(--navbar-height) + 350px);
+  padding-top: calc(var(--navbar-height) + 0px);
   min-height: 100vh;
   box-sizing: border-box;
 }
