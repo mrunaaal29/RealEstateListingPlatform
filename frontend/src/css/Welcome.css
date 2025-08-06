@@ -1,5 +1,3 @@
-/* src/css/Welcome.css */
-
 html, body {
   height: 100%;
   margin: 0;
@@ -7,17 +5,12 @@ html, body {
   background-color: #000; /* fallback */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-/* 
-body {
-  width: 100vw;
-  overflow-x: hidden;
-} */
 
 .welcome-page {
   height: 100vh;
   width: 100vw;
-  overflow: hidden; /* Disable scroll only here */
-  background-color: black; /* fallback */
+  overflow: hidden; 
+  background-color: black;
 }
 
 .welcome-container {
@@ -34,14 +27,13 @@ body {
   overflow: hidden;
 }
 
-
 .welcome-overlay {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* semi-transparent dark overlay */
+  background-color: rgba(0, 0, 0, 0.4); /* original dark overlay */
   z-index: 1;
 }
 
@@ -49,37 +41,42 @@ body {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  backdrop-filter: blur(6px);
+  padding: 2.5rem 2rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .welcome-content h1 {
-  font-size: 3rem;
+  font-size: 3.2rem;
   font-weight: bold;
   margin-bottom: 1rem;
   color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 .welcome-content p {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   margin-bottom: 2rem;
-  color: #f0f0f0;
+  color: #f5f5f5;
 }
 
 .welcome-buttons button {
-  margin: 0 0.5rem;
-  padding: 0.8rem 1.5rem;
+  margin: 0 0.6rem;
+  padding: 0.9rem 1.6rem;
   font-size: 1rem;
   border: none;
-  border-radius: 8px;
-  background-color: #00a8a8;
-  color: white;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #00c6a7, #0072ff);
+  color: #ffffff;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .welcome-buttons button:hover {
-  background-color: #007777;
+  background: linear-gradient(90deg, #00e6b8, #3399ff);
+  color: #ffeaa7;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }

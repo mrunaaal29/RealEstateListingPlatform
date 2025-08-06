@@ -36,7 +36,9 @@ function OwnerDashboard() {
 
   return (
     <div className="owner-dashboard">
-      <h2>Owner Dashboard</h2>
+       <div class="dashboard-heading-box">
+        <h2>Owner Dashboard</h2>
+      </div>
       <button className="add-button" onClick={handleAddListing}>Add New Property</button>
       <div className="listing-grid">
         {listings.length === 0 ? (

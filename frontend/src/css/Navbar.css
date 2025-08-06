@@ -1,25 +1,22 @@
-/* src/css/Navbar.css */
-
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  background-color: #00a8a8;
+  background: linear-gradient(90deg, #00c6a7 0%, #0072ff 100%);
   padding: 15px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
-
-
 
 .navbar-logo a {
   text-decoration: none;
-  color: white;
+  color: #ffffff;
   font-size: 24px;
   font-weight: bold;
 }
@@ -33,11 +30,13 @@
 
 .navbar-links li a {
   text-decoration: none;
-  color: white;
+  color: #ffffff;
   font-size: 18px;
   font-weight: bold;
+  transition: all 0.3s ease;
 }
 
 .navbar-links li a:hover {
-  text-decoration: underline;
+  color: #ffeaa7;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
 }
