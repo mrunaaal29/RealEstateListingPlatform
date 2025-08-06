@@ -23,6 +23,7 @@ Instructions to run the project
 
 1. Clone the Repository
 git clone https://github.com/mrunaaal29/RealEstateListingPlatform.git
+
 cd RealEstateListingPlatform
 
 2. Set Up MySQL Database
@@ -41,6 +42,7 @@ Prerequisites:
 Python installed (3.8+ recommended)
 
 cd backend
+
 pip install -r requirements.txt
 
 Start the server:
@@ -48,8 +50,11 @@ python app.py
 
 4. Start the Frontend (React App)
 In a new terminal:
+
 cd frontend
+
 npm install
+
 npm start
 
 
