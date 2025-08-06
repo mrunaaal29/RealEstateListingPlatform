@@ -58,17 +58,24 @@ npm install
 npm start
 
 
-Database Configuration
+5.Database Configuration
 Create a MySQL database named real_estate.
 
 Import the SQL dump from:
 
 database/real_estate.sql
+
 Make sure your database credentials are correctly configured in backend/app.py:
 
+
 mysql = MySQL()
+
 app.config['MYSQL_HOST'] = 'localhost'
+
 app.config['MYSQL_USER'] = 'root'
+
 app.config['MYSQL_PASSWORD'] = 'your_password_here'
+
 app.config['MYSQL_DB'] = 'real_estate'
+
 mysql.init_app(app)
