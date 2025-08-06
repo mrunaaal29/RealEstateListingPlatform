@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../css/Register.css'; // Ensure this file is styled as discussed
 
 function Register() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
-    role: 'buyer', // default role
+    role: 'buyer',
     phone: '',
     address: '',
   });
@@ -18,7 +19,7 @@ function Register() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleRegister = async (e) => {
@@ -41,73 +42,60 @@ function Register() {
   };
 
   return (
-    <div className="container">
+    <div className="register-container">
       <h2>User Registration</h2>
-      <form onSubmit={handleRegister}>
-        <div>
-          <label>Name:</label><br />
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
+      <form className="register-form" onSubmit={handleRegister}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter your name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
 
-        <div>
-          <label>Email:</label><br />
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
 
-        <div>
-          <label>Password:</label><br />
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter your password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
 
-        <div>
-          <label>Role:</label><br />
-          <select name="role" value={formData.role} onChange={handleChange}>
-            <option value="owner">Owner</option>
-            <option value="buyer">Buyer</option>
-          </select>
-        </div>
+        <select name="role" value={formData.role} onChange={handleChange}>
+          <option value="owner">Owner</option>
+          <option value="buyer">Buyer</option>
+        </select>
 
-        <div>
-          <label>Phone:</label><br />
-          <input
-            type="text"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        <input
+          type="text"
+          name="phone"
+          placeholder="Enter your phone number"
+          value={formData.phone}
+          onChange={handleChange}
+          required
+        />
 
-        <div>
-          <label>Address:</label><br />
-          <textarea
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        <textarea
+          name="address"
+          placeholder="Enter your address"
+          value={formData.address}
+          onChange={handleChange}
+          required
+        />
 
-        {errorMsg && <p style={{ color: 'red' }}>{errorMsg}</p>}
-        {successMsg && <p style={{ color: 'green' }}>{successMsg}</p>}
+        {errorMsg && <p className="error-message">{errorMsg}</p>}
+        {successMsg && <p className="success-message">{successMsg}</p>}
 
         <button type="submit">Register</button>
       </form>

@@ -1,49 +1,88 @@
-.user-dashboard {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-family: Arial, sans-serif;
+/* Apply full-page greenish gradient background */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #d4fc79, #96e6a1); /* Soft green gradient */
+  background-attachment: fixed; /* Keeps background fixed on scroll */
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
+/* Dashboard container */
+.user-dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: calc(var(--navbar-height) + 350px);
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Heading */
 h2 {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  color: #1b4332;
+  text-shadow: 1px 1px #c8facc;
 }
 
+/* Search input */
 .search-input {
   width: 100%;
-  padding: 0.6rem 1rem;
-  margin-bottom: 2rem;
-  font-size: 1rem;
-  border: 1px solid #aaa;
-  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  font-size: 1.1rem;
+  border: 2px solid #74c69d;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.3s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
+.search-input:focus {
+  border-color: #2d6a4f;
+  box-shadow: 0 0 6px rgba(46, 204, 113, 0.4);
+}
+
+/* Listings grid */
 .listing-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
+  gap: 1.8rem;
+  margin-top: 2rem;
 }
 
+/* Individual listing card */
 .listing-card {
-  background-color: #f9f9f9;
-  padding: 1.2rem;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  transition: box-shadow 0.2s ease;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .listing-card:hover {
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
+/* Card title */
 .listing-card h3 {
   margin-top: 0;
-  margin-bottom: 0.5rem;
-  color: #333;
+  margin-bottom: 0.75rem;
+  font-size: 1.4rem;
+  color: #081c15;
 }
 
+/* Card details */
 .listing-card p {
-  margin: 0.3rem 0;
-  color: #555;
+  margin: 0.4rem 0;
+  color: #344e41;
+  font-size: 0.95rem;
+}
+
+p strong {
+  color: #1b4332;
 }

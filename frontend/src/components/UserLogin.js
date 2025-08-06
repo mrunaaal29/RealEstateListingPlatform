@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../css/UserLogin.css'; // 👈 Make sure this CSS file exists
 
 function UserLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setErrorMsg('');
+    setLoading(true);
 
     try {
       const response = await axios.post('http://localhost:5000/api/login', {
@@ -22,13 +25,12 @@ function UserLogin() {
         const user = response.data.user;
         const { id, role } = user;
 
-        // Store user info in localStorage
         localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('userId', id);
         localStorage.setItem('role', role);
 
         if (role === 'owner') {
-          localStorage.setItem('ownerId', id); // specifically for AddListing.js
+          localStorage.setItem('ownerId', id);
           navigate('/owner/dashboard');
         } else if (role === 'buyer') {
           navigate('/buyer/dashboard');
@@ -40,36 +42,37 @@ function UserLogin() {
       }
     } catch (error) {
       setErrorMsg(error.response?.data?.message || 'An error occurred');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="container">
+    <div className="user-login-container">
       <h2>User Login</h2>
-      <form onSubmit={handleLogin}>
-        <div>
-          <label>Email:</label><br />
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
 
-        <div>
-          <label>Password:</label><br />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
+      <form className="user-login-form" onSubmit={handleLogin}>
+        <input
+          type="email"
+          placeholder="Enter your email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
 
-        {errorMsg && <p style={{ color: 'red' }}>{errorMsg}</p>}
+        <input
+          type="password"
+          placeholder="Enter your password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
 
-        <button type="submit">Login</button>
+        {errorMsg && <div className="error-message">{errorMsg}</div>}
+
+        <button type="submit" disabled={loading}>
+          {loading ? 'Logging in...' : 'Login'}
+        </button>
       </form>
     </div>
   );

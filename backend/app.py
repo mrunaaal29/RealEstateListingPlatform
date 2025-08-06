@@ -111,6 +111,16 @@ def get_all_users():
     conn.close()
     return jsonify(users)
 
+@app.route('/api/admin/listings', methods=['GET'])
+def get_all_listings():
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM listings")
+    listings = cursor.fetchall()
+    conn.close()
+    return jsonify(listings)
+
+
 # Approve/Reject/Delete listing
 @app.route('/api/admin/listings/<int:id>', methods=['PUT', 'DELETE'])
 def manage_listing(id):

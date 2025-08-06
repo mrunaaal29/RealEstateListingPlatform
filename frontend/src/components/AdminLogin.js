@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // ✅ import navigate
+import { useNavigate } from 'react-router-dom';
+import '../css/AdminLogin.css'; // Make sure this path is correct
 
 function AdminLogin({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate(); // ✅ hook to redirect
+  const [errorMsg, setErrorMsg] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
+    setErrorMsg('');
     setLoading(true);
+
     try {
       const res = await axios.post('http://localhost:5000/api/admin/login', {
         username,
@@ -17,19 +21,18 @@ function AdminLogin({ onLogin }) {
       });
 
       if (res.status === 200 && res.data.admin) {
-        alert(res.data.message); // "Admin login successful"
-        onLogin(res.data.admin); // ✅ set admin in App.js
-        navigate('/admin/dashboard'); // ✅ redirect after login
+        onLogin(res.data.admin);
+        navigate('/admin/dashboard');
       } else {
-        alert('Unexpected response from server.');
+        setErrorMsg('Unexpected response from server.');
       }
 
     } catch (err) {
-      if (err.response && err.response.status === 401) {
-        alert('Invalid credentials!!');
+      if (err.response?.status === 401) {
+        setErrorMsg('Invalid username or password!');
       } else {
         console.error('Login Error:', err);
-        alert('Something went wrong. Please try again.');
+        setErrorMsg('Something went wrong. Please try again.');
       }
     } finally {
       setLoading(false);
@@ -37,38 +40,25 @@ function AdminLogin({ onLogin }) {
   };
 
   return (
-    <div className="container mt-5 col-md-6">
-      <h3 className="mb-3">Admin Login</h3>
+    <div className="admin-login-wrapper">
+  <h2>Admin Login</h2>
+  <input
+    type="text"
+    placeholder="Enter your username"
+    value={username}
+    onChange={(e) => setUsername(e.target.value)}
+  />
+  <input
+    type="password"
+    placeholder="Enter your password"
+    value={password}
+    onChange={(e) => setPassword(e.target.value)}
+  />
+  <button onClick={handleLogin} disabled={loading}>
+    {loading ? 'Logging in...' : 'Login'}
+  </button>
+</div>
 
-      <div className="mb-3">
-        <label className="form-label">Username</label>
-        <input
-          className="form-control"
-          placeholder="Enter username"
-          value={username}
-          onChange={e => setUsername(e.target.value)}
-        />
-      </div>
-
-      <div className="mb-3">
-        <label className="form-label">Password</label>
-        <input
-          className="form-control"
-          type="password"
-          placeholder="Enter password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
-      </div>
-
-      <button
-        className="btn btn-primary"
-        onClick={handleLogin}
-        disabled={loading}
-      >
-        {loading ? 'Logging in...' : 'Login'}
-      </button>
-    </div>
   );
 }
 
